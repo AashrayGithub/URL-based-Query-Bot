@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pickle
 import time
@@ -81,7 +82,7 @@ st.markdown(
 
 # Title and sidebar title
 st.title("InfoBot: Intelligent Research Tool")
-st.sidebar.title("🔗 Enter URLs here")
+st.sidebar.title("🔗 Enter News Article URLs")
 
 # Initialize session state
 if 'faiss_index' not in st.session_state:
@@ -113,7 +114,7 @@ def extract_text_from_url(url):
     for data in response.iter_content(1024):
         downloaded_size += len(data)
         content += data.decode('utf-8', errors='ignore')
-        elapsed_time = time.time() - start_time
+        # elapsed_time = time.time() - start_time
         # download_speed = downloaded_size / elapsed_time if elapsed_time > 0 else 0
         # percent_done = (downloaded_size / total_size) * 100 if total_size > 0 else 0
         # print(f"Loading {url} - {percent_done:.2f}% complete at {download_speed:.2f} bytes/second")
